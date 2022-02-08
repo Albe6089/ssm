@@ -11,6 +11,6 @@ resource "aws_eip" "b-h_eip" {
 data "aws_subnets" "public_ip" {
   filter {
     name   = "vpc-id"
-    values = [data.aws_vpc.default.id[0]]
+    values = [data.aws_vpc.default.id]
   }
 }

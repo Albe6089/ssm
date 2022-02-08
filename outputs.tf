@@ -15,5 +15,5 @@ output "VPC_ID" {
 
 output "Public_IP" {
   description = "Contains the public IP address"
-  value       = data.aws_subnets.public_ip.id[0]
+  value       = data.aws_subnets.public_ip.id
 }
