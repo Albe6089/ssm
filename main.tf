@@ -41,3 +41,4 @@ resource "aws_instance" "b-h" {
     Name = "Bastion_Host"
   }
 }
+
