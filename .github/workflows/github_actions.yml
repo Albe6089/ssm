@@ -18,14 +18,19 @@ jobs:
         uses: actions/checkout@v2
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v1
+
+      - name: AWS SSM Send-Command
+        uses: peterkimzz/aws-ssm-send-command@master
+        id: ssm
+
         with:
-          args: --acl public-read --follow-symlinks --delete
-        env:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ${{ secrets.AWS_REGION }}
-          aws-bucket: ${{ secrets.AWS_S3_BUCKET }}
-          SOURCE_DIR: user_add.yml
+          instance-ids: ${{ secrets.INSTANCE_ID }}
+          working-directory: /home/ubuntu
+          command: ls -al
+          comment: Hello world!
       # Initialize a new or existing Terraform working directory by creating initial files, loading any remote state, downloading modules, etc.
       - name: Terraform Init
         run: terraform init
