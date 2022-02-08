@@ -1,6 +1,6 @@
-output "Public_IP" {
+output "EIP" {
   description = "Contains the public EIP address"
-  value       = ["aws_eip.b-h_eip.public_ip"]
+  value       = aws_eip.b-h_eip.public_ip
 }
 
 output "Instance_ID" {
@@ -11,4 +11,9 @@ output "Instance_ID" {
 output "VPC_ID" {
   description = "Contains VPC id"
   value       = data.aws_vpc.default.id
+}
+
+output "Public_IP" {
+  description = "Contains the public IP address"
+  value       = data.aws_subnets.public_ip.id[0]
 }

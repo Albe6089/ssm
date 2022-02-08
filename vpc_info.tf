@@ -8,9 +8,9 @@ resource "aws_eip" "b-h_eip" {
   vpc      = true
 }
 
-// data "aws_subnets" "public_ip" {
-//   filter {
-//     name   = "vpc-id"
-//     values = [var.vpc_id]
-//   }
-// }
+data "aws_subnets" "public_ip" {
+  filter {
+    name   = "vpc-id"
+    values = [data.aws_vpc.default.id[0]]
+  }
+}
