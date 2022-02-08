@@ -1,13 +1,13 @@
 # Remote backend
-// terraform {
-//   backend "s3" {
-//     bucket = "bastion-tfstate-backend"
-//     key    = "env:/dev/bastion.tfstate"
-//     region = "us-east-1"
-//     dynamodb_table = "bastion-terraform-state-locking"
-//     encrypt = true
-//   }
-// }
+terraform {
+  backend "s3" {
+    bucket = "bastion-tfstate-backend"
+    key    = "env:/dev/bastion.tfstate"
+    region = "us-east-1"
+    dynamodb_table = "bastion-terraform-state-locking"
+    encrypt = true
+  }
+}
 
 # Creating bucket for tfstate
 resource "aws_s3_bucket" "bucket" {
