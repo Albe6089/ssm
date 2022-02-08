@@ -4,6 +4,11 @@ output "Public_IP" {
 }
 
 output "Instance_ID" {
-  description = "Contains the public IP address"
+  description = "Contains Instance id"
   value       = aws_instance.b-h.id
+}
+
+output "VPC_ID" {
+  description = "Contains VPC id"
+  value       = data.aws_vpc.default.id
 }

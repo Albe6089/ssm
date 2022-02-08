@@ -47,12 +47,23 @@ jobs:
         if: github.ref == 'refs/heads/main' && github.event_name == 'push'
         run: terraform apply -auto-approve
 
-      - name: Run playbook
-        uses: dawidd6/action-ansible-playbook@v2
-        with:
-          playbook: user_add.yml
-          # key: ${{ secrets.SSH_PRIVATE_KEY }}
-          directory: ./
-          inventory: |
-            [bastion]
-            bastion_host ansible_host=ubuntu@${{ secrets.IP }}
+      # - name: Run playbook
+      #   uses: dawidd6/action-ansible-playbook@v2
+      #   with:
+      #     playbook: user_add.yml
+      #     # key: ${{ secrets.SSH_PRIVATE_KEY }}
+      #     directory: ./
+      #     inventory: |
+      #       [bastion]
+      #       bastion_host ansible_host=ubuntu@${{ secrets.IP }}
+# - name: install aws-cli
+#   hosts: all
+#   gather_facts: false
+#   vars:
+#     ansible_connection: aws_ssm
+#     ansible_aws_ssm_bucket_name: nameofthebucket
+#     ansible_aws_ssm_region: us-east-1
+#   tasks:
+#   - name: aws-cli
+#     raw: yum install -y awscli
+#     tags: aws-cli
