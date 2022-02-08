@@ -11,10 +11,10 @@ resource "aws_eip" "b-h_eip" {
 data "aws_subnets" "public_ip" {
   filter {
     name   = "AZ"
-    values = [data.aws_availability_zonesc.AZ.id]
+    values = [data.aws_availability_zones.AZ.id]
   }
 }
 
 data "aws_availability_zones" "AZ" {
-  state = "available"
+  state = true
 }

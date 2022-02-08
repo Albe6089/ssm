@@ -13,7 +13,7 @@ output "VPC_ID" {
   value       = data.aws_vpc.default.id
 }
 
-output "Public_IP" {
+output "AZ" {
   description = "Contains the public IP address"
-  value       = data.aws_subnets.public_ip.id
+  value       = data.aws_availability_zones.AZ.id
 }
