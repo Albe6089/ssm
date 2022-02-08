@@ -10,7 +10,11 @@ resource "aws_eip" "b-h_eip" {
 
 data "aws_subnets" "public_ip" {
   filter {
-    name   = "vpc-id"
-    values = [data.aws_vpc.default.id]
+    name   = "AZ"
+    values = [data.aws_availability_zonesc.AZ.id]
   }
+}
+
+data "aws_availability_zones" "AZ" {
+  state = "available"
 }
