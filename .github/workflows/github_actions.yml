@@ -47,6 +47,12 @@ jobs:
         if: github.ref == 'refs/heads/main' && github.event_name == 'push'
         run: terraform apply -auto-approve
 
-      # - name: AWS SSM Send Command
-      #   uses: peterkimzz/aws-ssm-send-command@1.0.4
-      #   with:
+      - name: Run playbook
+        uses: dawidd6/action-ansible-playbook@v2
+        with:
+          playbook: user_add.yml
+          # key: ${{ secrets.SSH_PRIVATE_KEY }}
+          directory: ./
+          inventory: |
+            [bastion]
+            bastion_host ansible_host=ubuntu@${{ secrets.IP }}
