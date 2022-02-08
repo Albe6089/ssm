@@ -30,7 +30,7 @@ jobs:
           instance-ids: ${{ secrets.INSTANCE_ID }}
           working-directory: /home/ubuntu/
           # command: ls -al/bin/sh deploy.sh
-          comment: echo $(date) >> logs.txt
+          comment: echo $(date) >> /home/ubuntu/
 
       # Initialize a new or existing Terraform working directory by creating initial files, loading any remote state, downloading modules, etc.
       - name: Terraform Init
