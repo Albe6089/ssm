@@ -16,5 +16,5 @@ data "aws_subnets" "public_ip" {
 }
 
 data "aws_availability_zones" "AZ" {
-  state = true
+  state = "available"
 }
