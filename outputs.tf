@@ -1,6 +1,6 @@
 output "Public_IP" {
   description = "Contains the public EIP address"
-  value       = aws_eip.b-h_eip.public_ip
+  value       = ["aws_eip.b-h_eip.public_ip"]
 }
 
 output "Instance_ID" {
