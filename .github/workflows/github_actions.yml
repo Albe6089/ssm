@@ -54,7 +54,8 @@ jobs:
           inventory: |
             [bastion]
             # ansible all -i default-bastion-host-my-nlb-fa15a5656e269012.elb.us-east-1.amazonaws.com
-            ansible-playbook -i default-bastion-host-my-nlb-fa15a5656e269012.elb.us-east-1.amazonaws.com, user_add.yml
+            # ansible-playbook -i default-bastion-host-my-nlb-fa15a5656e269012.elb.us-east-1.amazonaws.com, user_add.yml
+            ansible-playbook user_add.yml -i inventory.ini
 
 # - name: install aws-cli
 #   hosts: all
