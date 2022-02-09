@@ -48,3 +48,28 @@ resource "aws_s3_bucket" "upload_bucket" {
     Environment = "Dev"
   }
 }
+
+# Copy file
+// resource "aws_s3_object_copy" "copy_object" {
+//   bucket = "upload-bucket-for-ssm"
+//   key    = "upload-bucket-for-ssm"
+//   source = "source_bucket/source_key"
+
+//   grant {
+//     uri         = "http://acs.amazonaws.com/groups/global/AllUsers"
+//     type        = "Group"
+//     permissions = ["READ"]
+//   }
+// }
+
+# upload file to s3
+resource "aws_s3_bucket_object" "upload_object" {
+  bucket = "upload-bucket-for-ssm"
+  key    = "user_add.yml"
+//   source = "user_add.yml"
+
+  # The filemd5() function is available in Terraform 0.11.12 and later
+  # For Terraform 0.11.11 and earlier, use the md5() function and the file() function:
+  # etag = "${md5(file("path/to/file"))}"
+  etag = filemd5("user_add.yml")
+}
