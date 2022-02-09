@@ -26,9 +26,9 @@ data "template_file" "user_data" {
 resource "aws_launch_template" "launch_config" {
   name                                 = "${terraform.workspace}-${var.bastion-hostName}-LT"
   update_default_version               = true
-  image_id                             = var.instance_ami
+  image_id                             = data.aws_ami.latest-ubuntu.id
   instance_initiated_shutdown_behavior = "terminate"
-  instance_type                        = var.ec2_instance_type
+  instance_type                        = var.ubuntu_instance_type
   vpc_security_group_ids               = [aws_security_group.bastion-sg.id]
   user_data                            = data.template_file.user_data.rendered
   iam_instance_profile                 = aws_iam_instance_profile.default.name
