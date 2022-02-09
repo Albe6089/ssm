@@ -25,21 +25,21 @@ data "aws_ami" "latest-ubuntu" {
   }
 }
 
-data "template_file" "user_data" {
-  template = file("${path.root}/userdata.sh")
+// data "template_file" "user_data" {
+//   template = file("${path.root}/userdata.sh")
 
-}
+// }
 
 # creating a bastion-host
-resource "aws_instance" "b-h" {
-  ami                  = data.aws_ami.latest-ubuntu.id
-  instance_type        = var.ubuntu_instance_type
-  iam_instance_profile = aws_iam_instance_profile.default.name
-  user_data            = data.template_file.user_data.rendered
+// resource "aws_instance" "b-h" {
+//   ami                  = data.aws_ami.latest-ubuntu.id
+//   instance_type        = var.ubuntu_instance_type
+//   iam_instance_profile = aws_iam_instance_profile.default.name
+//   user_data            = data.template_file.user_data.rendered
 
-  tags = {
-    Name = "Bastion_Host"
-  }
-}
+//   tags = {
+//     Name = "Bastion_Host"
+//   }
+// }
 
 
