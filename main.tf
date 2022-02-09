@@ -40,7 +40,7 @@ resource "aws_instance" "b-h" {
 
 # Upload bucket
 resource "aws_s3_bucket" "upload_bucket" {
-  bucket = "upload-bucket"
+  bucket = "upload-bucket-for-ssm"
   acl    = "private"
 
   tags = {
