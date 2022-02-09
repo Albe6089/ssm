@@ -1,5 +1,4 @@
 #!/bin/bash
-
 set -e
 ### Update and Installing Ansible
 sudo apt update
