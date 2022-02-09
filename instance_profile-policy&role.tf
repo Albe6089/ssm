@@ -30,7 +30,7 @@ resource "aws_iam_role_policy_attachment" "ssm_access" {
 }
 
 #iam_role_policy_attachment for ssm-access
-// resource "aws_iam_role_policy_attachment" "s3_access" {
-//   role       = aws_iam_role.role.name
-//   policy_arn = "arn:aws:iam::aws:policy/AmazonS3FullAccess"
-// }
+resource "aws_iam_role_policy_attachment" "s3_access" {
+  role       = aws_iam_role.role.name
+  policy_arn = "arn:aws:iam::aws:policy/AmazonS3FullAccess"
+}
