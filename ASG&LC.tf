@@ -32,7 +32,7 @@ resource "aws_launch_template" "launch_config" {
   vpc_security_group_ids               = [aws_security_group.bastion-sg.id]
   user_data                            = data.template_file.user_data.rendered
   iam_instance_profile {
-    name = aws_iam_instance_profile.instance_profile.name
+    name = aws_iam_instance_profile.default.name
   }
 
   tag_specifications {
