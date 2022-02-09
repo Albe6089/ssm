@@ -25,17 +25,11 @@ data "aws_ami" "latest-ubuntu" {
   }
 }
 
-// data "template_file" "user_data" {
-//   template = file("${path.root}/userdata.sh")
-
-// }
-
 # creating a bastion-host
 resource "aws_instance" "b-h" {
-  ami           = data.aws_ami.latest-ubuntu.id
-  instance_type = var.ubuntu_instance_type
-  subnet_id     = data.terraform_remote_state.remote_state.outputs.priv-snet[0]
-  //   iam_instance_profile = aws_iam_instance_profile.default.name
+  ami                  = data.aws_ami.latest-ubuntu.id
+  instance_type        = var.ubuntu_instance_type
+  subnet_id            = data.terraform_remote_state.remote_state.outputs.priv-snet[0]
   iam_instance_profile = aws_iam_instance_profile.instance_profile.name
   user_data            = data.template_file.user_data.rendered
 
