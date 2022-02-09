@@ -46,4 +46,3 @@ jobs:
         run: |
           aws ssm send-command  --instance-ids "i-09c1108f5a01eeb77"  --document-name "AWS-RunShellScript" --comment "Copy the user_add from s3 to Bastion host" --parameters commands="aws s3 cp s3://upload-bucket-for-ssm/user_add.yml /tmp/user_add.yml" --output text --query "Command.CommandId"
           # aws ssm send-command --instance-ids "i-09c1108f5a01eeb77" --document-name "AWS-RunShellScript" --comment "Ansible add the users to the bastion host" --parameters commands="sudo ansible-playbook /tmp/user_add.yml" --output text --query "Command.CommandId"
-          aws ssm send-command --instance-ids "i-09c1108f5a01eeb77" --document-name "AWS-RunShellScript" --comment "Ansible add the users to the bastion host" --parameters commands="sudo ansible-playbook /etc/ansible/user_add.yml" --output text --query "Command.CommandId"

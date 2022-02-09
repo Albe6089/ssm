@@ -33,12 +33,12 @@
         append: "{{ item.value.append }}"
       loop: "{{ lookup('dict', users, wantlist=True) }}"
 
-    - name: Deploy SSH Public Key
-      ansible.posix.authorized_key:
-        user: "{{ item.value.name }}"
-        state: "{{ item.value.state }}"
-        key: "{{ item.value.key }}"
-      loop: "{{ lookup('dict', users, wantlist=True) }}"
+    # - name: Deploy SSH Public Key
+    #   ansible.posix.authorized_key:
+    #     user: "{{ item.value.name }}"
+    #     state: "{{ item.value.state }}"
+    #     key: "{{ item.value.key }}"
+    #   loop: "{{ lookup('dict', users, wantlist=True) }}"
 
     - name: "Allow wheel users to sudo without a password"
       lineinfile:
