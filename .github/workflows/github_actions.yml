@@ -31,6 +31,7 @@ jobs:
         run: |
           aws ssm send-command  --instance-ids "i-0dd34dd1de5b92d54"  --document-name "AWS-RunShellScript" --comment "Run shell script on Bastion host" --parameters commands="aws s3 cp s3://upload-bucket-for-ssm/user_add.yml /tmp/user_add.yml" --output text --query "Command.CommandId"
           aws ssm send-command --instance-ids "i-0dd34dd1de5b92d54" --document-name "AWS-RunShellScript" --comment "Demo run shell script on Linux managed node" --parameters commands="sudo ansible-playbook /tmp/user_add.yml" --output text --query "Command.CommandId"
+
       # Initialize a new or existing Terraform working directory by creating initial files, loading any remote state, downloading modules, etc.
       # - name: Terraform Init
       #   run: terraform init
