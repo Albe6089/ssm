@@ -3,6 +3,7 @@
 - hosts: localhost
   become: yes
   gather_facts: false
+  #  - /etc/ansible/vars.yml
   # remote_user: ubuntu
   # become_user: root
   vars:
