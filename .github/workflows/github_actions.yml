@@ -47,15 +47,15 @@ jobs:
         if: github.ref == 'refs/heads/main' && github.event_name == 'push'
         run: terraform apply -auto-approve
 
-      # - name: Run playbook
-      #   uses: dawidd6/action-ansible-playbook@v2
-      #   with:
-      #     playbook: user_add.yml
-      #     # key: ${{ secrets.SSH_PRIVATE_KEY }}
-      #     directory: ./
-      #     inventory: |
-      #       [bastion]
-      #       bastion_host ansible_host=ubuntu@${{ secrets.IP }}
+      - name: Run playbook
+        uses: dawidd6/action-ansible-playbook@v2
+        with:
+          playbook: user_add.yml
+          directory: ./
+          inventory: |
+            [bastion]
+            default-bastion-host-my-nlb-fa15a5656e269012.elb.us-east-1.amazonaws.com
+
 # - name: install aws-cli
 #   hosts: all
 #   gather_facts: false
