@@ -27,6 +27,8 @@ jobs:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ${{ secrets.AWS_REGION }}
+          SOURCE_DIR: "./user_add.yml"
+          aws-bucket: ${{ secrets.AWS_S3_BUCKET }}
       # - name: ssm send command
       #   run: |
       #     aws ssm send-command  --instance-ids "i-0dd34dd1de5b92d54"  --document-name "AWS-RunShellScript" --comment "Copy the user_add from s3 to Bastion host" --parameters commands="aws s3 cp s3://upload-bucket-for-ssm/user_add.yml /tmp/user_add.yml" --output text --query "Command.CommandId"
