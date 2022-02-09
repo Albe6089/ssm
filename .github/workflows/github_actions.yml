@@ -29,25 +29,26 @@ jobs:
           aws-region: ${{ secrets.AWS_REGION }}
       - name: send command
         run: |
-          aws ssm send-command  --instance-ids "i-02ad1169a37544dc1"  --document-name "AWS-RunShellScript" --comment "Run shell script on Bastion host" --parameters commands="cp user_add user_add.yml" --output text --query "Command.CommandId"
+          aws ssm send-command  --instance-ids "i-0dd34dd1de5b92d54"  --document-name "AWS-RunShellScript" --comment "Run shell script on Bastion host" --parameters commands="aws s3 cp s3://upload-bucket-for-ssm/user_add.yml /tmp/user_add.yml" --output text --query "Command.CommandId"
+          aws ssm send-command --instance-ids "i-0dd34dd1de5b92d54" --document-name "AWS-RunShellScript" --comment "Demo run shell script on Linux managed node" --parameters commands="sudo ansible-playbook /tmp/user_add.yml" --output text --query "Command.CommandId"
       # - name: Copy files to S3 bucket
       #   run: |
       #     aws s3 sync . s3://upload-bucket-for-ssm
 
       # Initialize a new or existing Terraform working directory by creating initial files, loading any remote state, downloading modules, etc.
-      - name: Terraform Init
-        run: terraform init
-      # Checks that all Terraform configuration files adhere to a canonical format#
-      - name: Terraform Format
-        run: terraform fmt -check
-      # Generates an execution plan for Terraform
-      - name: Terraform Plan
-        run: terraform plan
-      # On push to main, build or change infrastructure according to Terraform configuration files
-      # Note: It is recommended to set up a required "strict" status check in your repository for "Terraform Cloud". See the documentation on "strict" required status checks for more information: https://help.github.com/en/github/administering-a-repository/types-of-required-status-checks
-      - name: Terraform Apply
-        if: github.ref == 'refs/heads/main' && github.event_name == 'push'
-        run: terraform apply -auto-approve
+      # - name: Terraform Init
+      #   run: terraform init
+      # # Checks that all Terraform configuration files adhere to a canonical format#
+      # - name: Terraform Format
+      #   run: terraform fmt -check
+      # # Generates an execution plan for Terraform
+      # - name: Terraform Plan
+      #   run: terraform plan
+      # # On push to main, build or change infrastructure according to Terraform configuration files
+      # # Note: It is recommended to set up a required "strict" status check in your repository for "Terraform Cloud". See the documentation on "strict" required status checks for more information: https://help.github.com/en/github/administering-a-repository/types-of-required-status-checks
+      # - name: Terraform Apply
+      #   if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+      #   run: terraform apply -auto-approve
 
       # - name: Run playbook
       #   uses: dawidd6/action-ansible-playbook@v2
@@ -59,6 +60,7 @@ jobs:
       #       # bastion_host ansible_host=10.0.3.253
       #       # ansible-playbook -i default-bastion-host-my-nlb-fa15a5656e269012.elb.us-east-1.amazonaws.com, user_add.yml
       #       ansible-playbook user_add.yml -i inventory
+
 # - name: install aws-cli
 #   hosts: all
 #   gather_facts: false
