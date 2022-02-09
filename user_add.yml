@@ -1,9 +1,10 @@
 #Ansible bastionhost
 ---
-- hosts: [bastion]
+- hosts: localhost
   become: yes
-  remote_user: ubuntu
-  become_user: root
+  gather_facts: false
+  # remote_user: ubuntu
+  # become_user: root
   vars:
     users:
       albert:
