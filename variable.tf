@@ -33,6 +33,18 @@ variable "priv-snet" {
   default = ["10.0.3.0/24", "10.0.4.0/24"]
 }
 
+variable "desired_capacity" {
+  type    = string
+  default = "1"
+}
+variable "max_size" {
+  type    = string
+  default = "1"
+}
+variable "min_size" {
+  type    = string
+  default = "1"
+}
 
 variable "ingress_rules" {
   type = map(object({

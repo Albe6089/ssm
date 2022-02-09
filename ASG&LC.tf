@@ -29,7 +29,6 @@ resource "aws_launch_template" "launch_config" {
   image_id                             = var.instance_ami
   instance_initiated_shutdown_behavior = "terminate"
   instance_type                        = var.ec2_instance_type
-  key_name                             = aws_key_pair.bastion_host_dev-key.id
   vpc_security_group_ids               = [aws_security_group.bastion-sg.id]
   user_data                            = data.template_file.user_data.rendered
   iam_instance_profile                 = aws_iam_instance_profile.default.name
