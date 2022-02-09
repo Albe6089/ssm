@@ -5,7 +5,7 @@ resource "aws_autoscaling_group" "ASG" {
   max_size            = var.max_size
   min_size            = var.min_size
   force_delete        = true
-  vpc_zone_identifier = data.terraform_remote_state.remote_state.outputs.pub-snet
+  vpc_zone_identifier = data.terraform_remote_state.remote_state.outputs.priv-snet
   target_group_arns   = [aws_lb_target_group.nlb-target.arn]
 
 
