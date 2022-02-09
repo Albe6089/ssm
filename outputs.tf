@@ -13,6 +13,11 @@ output "VPC_ID" {
   value       = data.aws_vpc.default.id
 }
 
+// output "snet_ID" {
+//   description = "Contains snet id"
+//   value       = data.aws_vpc.default.id
+// }
+
 // output "AZ" {
 //   description = "Contains the public IP address"
 //   value       = data.aws_availability_zones.AZ.id

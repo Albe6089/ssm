@@ -3,7 +3,7 @@ data "aws_vpc" "default" {
 }
 
 data "aws_subnets" "default" {
-  values = data.aws_vpc.default.id
+  vpc_id = data.aws_vpc.default
 }
 # Assiging a static public IP address to the bastion host
 // resource "aws_eip" "b-h_eip" {
@@ -11,9 +11,10 @@ data "aws_subnets" "default" {
 //   vpc      = true
 // }
 
+
 // data "aws_subnets" "public_ip" {
 //   filter {
-//     name   = "vpc-id"
-//     values = [data.aws_vpc.default.id]
+//     name   = "pub"
+//     values = ["subnet-0b152e8a70694e0d0"]
 //   }
 // }
