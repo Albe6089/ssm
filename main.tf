@@ -38,4 +38,13 @@ resource "aws_instance" "b-h" {
   }
 }
 
+# Upload bucket
+resource "aws_s3_bucket" "upload_bucket" {
+  bucket = "upload-bucket"
+  acl    = "private"
 
+  tags = {
+    Name        = "up load bucket"
+    Environment = "Dev"
+  }
+}
