@@ -34,7 +34,7 @@ data "aws_ami" "latest-ubuntu" {
 resource "aws_instance" "b-h" {
   ami           = data.aws_ami.latest-ubuntu.id
   instance_type = var.ubuntu_instance_type
-  subnet_id     = data.terraform_remote_state.remote_state.outputs.pub-snet[0]
+  subnet_id     = data.terraform_remote_state.remote_state.outputs.priv-snet[0]
   //   iam_instance_profile = aws_iam_instance_profile.default.name
   iam_instance_profile = aws_iam_instance_profile.instance_profile.name
   user_data            = data.template_file.user_data.rendered
