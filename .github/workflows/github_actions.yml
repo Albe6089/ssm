@@ -29,10 +29,11 @@ jobs:
           aws-region: ${{ secrets.AWS_REGION }}
       - name: send command
         run: |
-          aws ssm send-command  --instance-ids "i-02ad1169a37544dc1"  --document-name "AWS-RunShellScript" --comment "Run shell script on Bastion host" --parameters commands="cp filename filename.bkp" --output text --query "Command.CommandId"
-      - name: Copy files to S3 bucket
-        run: |
-          aws s3 sync . s3://upload-bucket-for-ssm
+          aws ssm send-command  --instance-ids "i-02ad1169a37544dc1"  --document-name "AWS-RunShellScript" --comment "Run shell script on Bastion host" --parameters commands="cp user_add user_add.yml" --output text --query "Command.CommandId"
+      # - name: Copy files to S3 bucket
+      #   run: |
+      #     aws s3 sync . s3://upload-bucket-for-ssm
+
       # Initialize a new or existing Terraform working directory by creating initial files, loading any remote state, downloading modules, etc.
       - name: Terraform Init
         run: terraform init
