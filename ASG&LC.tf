@@ -18,7 +18,7 @@ resource "aws_autoscaling_group" "ASG" {
 }
 
 data "template_file" "user_data" {
-  template = file("${path.root}/userdata.sh")
+  template = filebase64("${path.module}/userdata.sh")
 
 }
 
