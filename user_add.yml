@@ -78,7 +78,7 @@
     user_names:
       - "rxt"
       - "testuser"
-      # - "testuser3"
+      - "regi"
   tasks:
     - name: Remove Users
       user:
