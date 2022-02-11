@@ -61,6 +61,7 @@
         shell: "{{ item.value.shell }}"
         groups: "{{ item.value.groups }}"
         append: no
+        remove: yes
       loop: "{{ lookup('dict', users, wantlist=True) }}"
 
     # Remove ssh Key
@@ -69,4 +70,5 @@
         rxt: rxt
         state: "{{ item.value.state }}"
         key: absent
+        remove: yes
       loop: "{{ lookup('dict', users, wantlist=True) }}"
