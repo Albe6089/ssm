@@ -58,10 +58,9 @@
       ansible.builtin.user:
         name: rxt
         state: absent
-        # shell: "{{ item.value.shell }}"
-        # groups: "{{ item.value.groups }}"
         append: no
         remove: yes
+        with_items: "{{ users }}"
       # loop: "{{ lookup('dict', users, wantlist=True) }}"
 
     # Remove ssh Key
