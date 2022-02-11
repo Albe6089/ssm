@@ -62,7 +62,7 @@
         groups: "{{ item.value.groups }}"
         append: no
         remove: yes
-      loop: "{{ lookup('dict', users, wantlist=True) }}"
+      # loop: "{{ lookup('dict', users, wantlist=True) }}"
 
     # Remove ssh Key
     - name: Remove ssh Key
@@ -71,4 +71,4 @@
         state: "{{ item.value.state }}"
         key: absent
         remove: yes
-      loop: "{{ lookup('dict', users, wantlist=True) }}"
+      # loop: "{{ lookup('dict', users, wantlist=True) }}"
